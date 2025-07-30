@@ -95,7 +95,12 @@ function maxBalance(data) {
 console.log(maxBalance(data));
 
 // classCode gesen field nemeh function bich
-function addClassCode(data) {}
-
 // eg: addClassCodeToStudents(students,"3A") => [{name: "boldo",age: 3,grade: 11,gender: "male",balance: 1231,classCode:"3A"},...]
+// function addClassCodeToStudents(student, "3A") {
+//   const class3AStudents = (student.filter(student) => {
+//     student.classCode === "3A")
+//   }
+// }
+
 // removeGenders from student array function bich
+// Нэг л products массив дээр ажиллана
