@@ -8,7 +8,7 @@ let datas = [
     rating: 4.8,
     isDiscounted: true,
     discountPercent: 10,
-    supplier: "MobiCom",
+    supplier: "Unitel",
     weight: 0.3,
   },
   {
@@ -177,7 +177,7 @@ function getTotalStock(products) {
 
 // 12. Бүх бүтээгдэхүүний нийлбэр үнийг тооцдог функц бич.
 function getTotalPrice(products) {
-  let totalPrice = products[0];
+  let totalPrice = 0;
   products.forEach((product) => {
     totalPrice += product.price;
   });
@@ -188,27 +188,41 @@ console.log("==============12");
 
 // 13. Тухайн supplier-аар шүүж бүтээгдэхүүнүүдийг буцаадаг функц бич.
 function filterBySupplier(products, supplierName) {
-  let filtered = products.filter((products) => {
-    return products.supplier == supplierName;
+  let name = "Unitel";
+  let filtered = products.filter((product) => {
+    return product.supplier === name;
   });
+
   return filtered;
 }
-console.log(filterBySupplier(datas, "Mobicom"));
 console.log("==============13");
-
+console.log(filterBySupplier(datas));
 // 14. Бүх бүтээгдэхүүний нэрсийг массив болгон буцаадаг функц бич.
 function getProductNames(products) {
-  // ...
+  let filtered = products.map((product) => {
+    return {
+      name: product.name,
+    };
+  });
+
+  return filtered;
 }
+console.log("==============14");
+console.log(getProductNames(datas));
 
 // 15. Бүтээгдэхүүнүүдийг үнээр нь өсөхөөр эрэмбэлж буцаадаг функц бич.
 function sortByPriceAscending(products) {
-  // ...
+  let priceAscending = products.sort((product2, product1) => {
+    return product2.price - product1.price;
+  });
+  return priceAscending;
 }
+console.log("==============15");
+console.log(sortByPriceAscending(datas));
 
 // 16. Нөөц багатай (≤ 5) бүтээгдэхүүнүүдийг шүүж буцаадаг функц бич.
 function getLowStockProducts(products) {
-  // ...
+ let filtered  = products.filter(())
 }
 
 // 17. Давхардалгүй нийлүүлэгчийн нэрсийн массив буцаадаг функц бич.
