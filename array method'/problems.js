@@ -108,8 +108,8 @@ function filterByBrand(products, brandName) {
   });
   return filtered;
 }
-console.log(filterByBrand(datas, "Apple"));
 console.log("==============5");
+console.log(filterByBrand(datas, "Apple"));
 
 // 6. Бүх бүтээгдэхүүн дээр `isHeavy: true/false` гэсэн талбар нэмдэг функц бич (жин 1 кг-аас их бол).
 function addIsHeavyFlag(products) {
@@ -122,18 +122,20 @@ function addIsHeavyFlag(products) {
   });
   return addHeavy;
 }
-console.log(addIsHeavyFlag(datas));
 console.log("==============6");
+console.log(addIsHeavyFlag(datas));
 
 // 7. Бүх бүтээгдэхүүний үнэд 10% нэмдэг функц бич.
 function increasePriceByTenPercent(products) {
-  return {
-    ...products,
-    price: products.price + (products.price * 10) / 100,
-  };
+  return products.map((product) => {
+    return {
+      ...product,
+      price: product.price * 10,
+    };
+  });
 }
-console.log(increasePriceByTenPercent(datas));
 console.log("==============7");
+console.log(increasePriceByTenPercent(datas));
 
 // 8. Хямдралын дараах үнэтэй `finalPrice` талбарыг тооцож нэмдэг функц бич.
 function addFinalPrice(products) {
@@ -153,9 +155,8 @@ function getTopRatedProduct(products) {
   });
   return maxProduct;
 }
-console.log(getTopRatedProduct(datas));
-
 console.log("==============9");
+console.log(getTopRatedProduct(datas));
 
 // 10. Үнэ хамгийн бага бүтээгдэхүүнийг буцаадаг функц бич.
 function getCheapestProduct(products) {
@@ -172,7 +173,12 @@ console.log("==============10");
 
 // 11. Бүх бүтээгдэхүүний нийт нөөц (stock)-ийг тооцдог функц бич.
 function getTotalStock(products) {
-  let;
+  let totalStock = products.map((product) => {
+    return {
+      stock: product.stock,
+    };
+  });
+  return totalStock;
 }
 
 // 12. Бүх бүтээгдэхүүний нийлбэр үнийг тооцдог функц бич.
@@ -222,25 +228,53 @@ console.log(sortByPriceAscending(datas));
 
 // 16. Нөөц багатай (≤ 5) бүтээгдэхүүнүүдийг шүүж буцаадаг функц бич.
 function getLowStockProducts(products) {
- let filtered  = products.filter(())
+  let filtered = products.filter((product) => {
+    return product.stock <= 5;
+  });
+  return filtered;
 }
+console.log("dasgal-16", getLowStockProducts(datas));
 
 // 17. Давхардалгүй нийлүүлэгчийн нэрсийн массив буцаадаг функц бич.
 function getUniqueSuppliers(products) {
-  // ...
+  let map = products.map((product) => {
+    return {
+      name: product.name,
+    };
+  });
+  return map;
 }
+console.log("dasgal-17", getUniqueSuppliers(datas));
 
 // 18. Зөвхөн name ба price талбартай шинэ массив үүсгэдэг функц бич.
 function getNameAndPriceList(products) {
-  // ...
+  let map = products.map((product) => {
+    return {
+      name: product.name,
+      price: product.price,
+    };
+  });
+  return map;
 }
+console.log("dasgal-18", getNameAndPriceList(datas));
 
 // 19. Үнэлгээ нь 4.5-аас их бүх бүтээгдэхүүнүүдийг буцаадаг функц бич.
 function getHighlyRatedProducts(products) {
-  // ...
+  let filtered = products.filter((product) => {
+    return product.rating > 4.5;
+  });
+  return filtered;
 }
+console.log("dasgal-19", getHighlyRatedProducts(datas));
 
 // 20. Бүх бүтээгдэхүүнд `id` талбар нэмж өгдөг функц бич (жишээ нь 1, 2, 3...).
 function addIdToProducts(products) {
-  // ...
+  return products.map((product, index) => {
+    return {
+      ...product,
+      id: index + 1,
+    };
+  });
 }
+
+console.log("dasgal-20", addIdToProducts(datas));
